@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-<body>
-
-<h1>変数の宣言と表示</h1>
-
 <?php
 
-$num = rand(1, 9);
+$num = rand(1, 5);
 
 if ($num == 1) {
   echo "1です！";
@@ -17,7 +11,3 @@ if ($num == 1) {
 }
 
 ?>
-
-
-</body>
-</html>
