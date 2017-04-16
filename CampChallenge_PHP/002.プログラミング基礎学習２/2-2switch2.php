@@ -14,7 +14,7 @@ switch ($lang) {
     echo "日本語";
       break;
   default:
-    # code...
+    
     break;
 }
 
