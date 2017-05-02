@@ -32,7 +32,7 @@ CREATE TABLE `m_subjects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subjectName` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
--- ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=cp932;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=cp932;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 DROP TABLE IF EXISTS `m_teachers`;
