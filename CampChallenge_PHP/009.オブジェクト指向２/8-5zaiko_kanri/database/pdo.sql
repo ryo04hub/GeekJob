@@ -1,0 +1,50 @@
+DROP DATABASE IF EXISTS stock_db;
+CREATE DATABASE stock_db;
+
+use stock_db;
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=cp932;
+
+DROP TABLE IF EXISTS stock;
+CREATE TABLE stock (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  item VARCHAR(255) NOT NULL,
+  company VARCHAR(255) NOT NULL,
+  stock VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=cp932;
+
+
+-- 以下はテーブルを3つにわけるパターンのために残しておく
+
+-- DROP TABLE IF EXISTS stock;
+-- CREATE TABLE stock (
+--   id int(11) NOT NULL AUTO_INCREMENT,
+--   stock int(11) NOT NULL,
+--   itemID int(11) NOT NULL,
+--   companyID int(11) NOT NULL,
+--   PRIMARY KEY(id)
+--   FOREIGN KEY(itemID) REFERENCES item(id),
+--   FOREIGN KEY(companyID) REFERENCES company(id)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=cp932;
+
+-- DROP TABLE IF EXISTS item;
+-- CREATE TABLE item(
+--   id int(11) NOT NULL AUTO_INCREMENT,
+--   itemName VARCHAR(255) NOT  NULL,
+--   price int(11) NOT  NULL,
+--   PRIMARY KEY(id)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=cp932;
+--
+-- DROP TABLE IF EXISTS company;
+-- CREATE TABLE company(
+--   id int(11) NOT NULL AUTO_INCREMENT,
+--   companyName VARCHAR(255) NOT  NULL,
+--   PRIMARY KEY(id)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=cp932;
