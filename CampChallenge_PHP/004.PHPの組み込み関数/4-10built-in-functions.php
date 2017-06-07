@@ -14,46 +14,48 @@ PHPの公式サイトから関数を選び、実際にロジックを作成し�
 ④最後に、ログファイルを読み込み、その内容を表示してください。
 */
 
-//初期設定いろいろ
-$fp = fopen('logtest.txt', 'w+');
-$mail = 'test@gmail.com';
+function start_time_log() {
+  $current_time = '現在時刻：' .date('Y年m月d日 h時i分s秒');
+
+  $fp = fopen('logtest.txt', 'a');
+  if ($fp != false) {
+    // ファイルに書き込み
+    fwrite($fp, $current_time."\n");
+    // 書いたら、閉じる
+    fclose($fp);
+  }
+}
+
+function end_time_log() {
+  $current_time = '終了時刻：' .date('Y年m月d日 h時i分s秒');
+
+  $fp = fopen('logtest.txt', 'a');
+  if ($fp != false) {
+    // ファイルに書き込み
+    fwrite($fp, $current_time."\n");
+    // 書いたら、閉じる
+    fclose($fp);
+  }
+}
 
 //組み込み関数"preg_match"を使って、メアドが@gmail.comかを判別する関数
-function gmail_checker(){
-
-  global $mail;
+function gmail_checker($mail){
+  start_time_log();
 
   if(preg_match("/@gmail.com/", $mail)){
-    echo "これはgmailです。";
-    return "run";
+    end_time_log();
+    return "これはgmailです。\n";
   } else {
-    echo"これはgmailではありません。";
-    return "run";
+    end_time_log();
+    return "これはgmailではありません。\n";
   }
 }
 
-gmail_checker();
+//関数の実行
+$mail  = 'test@test.com';
+echo gmail_checker($mail);
 
-//現在日時の取得
-$current_time = date('Y年m月d日 h時i分s秒');
-
-//書き込み内容の定義
-$start = $current_time . " 開始";
-$end = $current_time . " 終了";
-
-//開始のタイミング・終了のタイミングで書き込みの処理をする関数
-function write_log(){
-  if (gmail_checker == run){   // もし上記の組み込み関数が実行されたら・・・
-    fwrite($fp, $start);
-  } else { // もし終了したら・・
-    fwrite($fp, $end);
-  }
-}
-
-
-//結果の表示・end
-var_dump($fp);
-echo $fp;
-fclose($fp);
+// ログ内容の表示
+echo file_get_contents('logtest.txt');
 
 ?>
